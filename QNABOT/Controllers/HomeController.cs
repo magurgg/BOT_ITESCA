@@ -42,11 +42,10 @@ namespace QNABOT.Controllers
                     Console.WriteLine("Pregunta: " + searchString);
                     String answer = objQnAResult.Answer;
                     Console.WriteLine("Respuesta: " + answer);
-                    if (answer == null)
+                    if (answer.Equals("No good match found in the KB"))
                     {
-                        //answer = "Vuelve a intentarlo";
-                        //objQnAResult.Answer = "Vuelve a intentarlo";
-                        return View();
+                        objQnAResult.Answer = "No tengo esa información a la mano, pero te contactaré con un ingeniero especializado en eso :)";
+                        answer = "No tengo esa información a la mano, pero te contactaré con un ingeniero especializado en eso :)";
                     }
                     String link = "";
                     String link2 = "";
