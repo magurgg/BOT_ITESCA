@@ -1,0 +1,70 @@
+@import "https://fonts.googleapis.com/css?family=Montserrat";
+body{height:100%;margin:0;padding:0;background:url(http://kriswhitewrites.com/wp-content/uploads/2013/06/landscape-mountains-snow-sky.jpg);background-size:cover;}
+.chat{width:56%;height:95%;box-shadow:0 0 30px -5px grey;margin:1.25% calc(47.5% - 26%);background:#fafafa;position:fixed;font-family:'Montserrat',sans-serif}
+.chat_header{padding:15px;border-bottom:4px solid #c66e09;background:#f98d11;color:white}
+.chat_status{font-size:11px;margin:4px 0 -4px}
+.chat_avatar{float:left;width:42px;border-radius:50%;margin-top:-3px;margin-right:15px}
+.chat_input{position:absolute;bottom:0;width:calc(100% - 8px);padding:10px 4px 6px;background:#c8c8c8}
+.chat_text{width:calc(89% - 10px);padding:10px;box-sizing:border-box;margin:0 5px 5px;vertical-align:top;font-family:'Montserrat',sans-serif}
+.chat_submit{height:40px;width:calc(10% - 5px);padding:10px;box-sizing:border-box;margin:0 5px 5px 0;vertical-align:top;border:1px solid #f98d11;cursor:pointer;color:#fafafa;border-radius:0 8px 8px 0;transition:all .4s;background:#f98d11}
+.chat_submit:hover {background: white;color:#f98d11}
+.chat_bubble-1,.chat_bubble-2{width:66%;padding:10px;margin:13px 17px;font-size:14px}
+.chat_bubble-1{border:1px solid #f98d11;border-radius:12px 12px 12px 0;margin-left:2%}
+.chat_bubble-2{border:1px solid #c8c8c8;border-radius:12px 12px 0 12px;text-align:right;margin-left:29%}
+.chat_s{max-height:calc(97% - 86px - 29px);overflow-y:scroll;overflow-x:hidden;padding:15px 0 0}
+::-webkit-scrollbar{width:10px;}
+::-webkit-scrollbar-thumb{border-radius:10px;-webkit-box-shadow:inset 0 0 0 4px #fff;background:rgba(0,0,0,0.2)}
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #customers td, #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #customers tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #customers tr:hover {
+        background-color: #ddd;
+    }
+
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+    }
+.buttonGen {
+    background-color: #f98d11;
+    float: left;
+    border-radius: 50%;
+    border: none;
+    width: 90px;
+    height: 90px;
+    margin: 2%;
+    cursor: pointer;
+    transition: all .4s
+}
+.buttonGen:hover {
+    background-color: white;
+    color: #fff
+}
+.mainvid {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

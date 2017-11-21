@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewData["Title"] = "About";
+    var pregunta = "";
+    var respuesta = "";
+}
+<head>
+    <title>Novutek Support</title>
+    <link rel="icon" href="https://cdn.discordapp.com/attachments/354059749832261632/376987774324310016/TabLogo.png">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+    <form asp-controller="Home" asp-action="Index">
+        <button type="submit" class="buttonGen"><img src="https://image.flaticon.com/icons/svg/88/88254.svg" style="width:60px;height:60px;margin-right:10px" /></button>
+    </form>
+    <form asp-controller="Home" asp-action="About">
+        <button type="submit" class="buttonGen" style="margin-left:-1%"><img src="https://image.flaticon.com/icons/svg/61/61112.svg" style="width:60px;height:60px;" /></button>
+    </form>
+    <div class="chat" style="overflow: scroll;">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                <div class="control-label col-md-2" id="inner">
+                    <b>Gestionar preguntas</b>
+                </div>
+                <div class="col-md-10" id="inner">
+                    <b>
+                        Pregunta: <br />
+                    </b>
+                    @Html.TextBox("NewQuestion", "", new { style = "width: 400px;", id = "TBQuestion" }) <br />
+                    <b>
+                        Respuesta: <br />
+                    </b>
+                    @Html.TextBox("NewAnswer", "", new { style = "width: 400px;height:100px", id = "TBAnswer" }) <br /> <br />
+                    <input name="AddEntry" type="submit" id="AddEntry" value="Añadir pregunta" style="margin:10px" />
+                    <input name="DeleteEntry" type="submit" id="DeleteEntry" value="Eliminar pregunta" style="margin:10px" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="control-label col-md-2">
+                </div>
+                <div class="col-md-10">
+                    <table id="customers" style="cursor: pointer">
+                        <tr>
+                            <th> Pregunta </th>
+                            <th> Respuesta </th>
+                        </tr>
+                        @for (var i = 0; i < Program.questionTable.Count; i++)
+                        {
+                            pregunta = (string)Program.questionTable[i];
+                            respuesta = (string)Program.answersTable[i];
+                            Console.WriteLine("Pregunta for: " + pregunta);
+                            Console.WriteLine("Respuesta for: " + respuesta);
+                            <tr onclick="myFunction(this)">
+                                <td> @pregunta </td>
+                                <td> @respuesta </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+<style>
+    #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #f98d11;
+            color: white;
+        }
+    #inner {
+        display: table;
+        margin: 0 auto;
+    }
+    .buttonGen {
+        background-color: #f98d11;
+        float: left;
+        border-radius: 50%;
+        border: none;
+        width: 90px;
+        height: 90px;
+        margin: 2%;
+        cursor: pointer;
+        transition: all .4s
+    }
+        .buttonGen:hover {
+            background-color: white;
+            color: #fff
+        }
+</style>
+<script>
+    function myFunction(x) {
+        var t = document.getElementById('customers');
+        document.getElementById("TBQuestion").value = t.rows[x.rowIndex].cells[0].innerHTML;
+        document.getElementById("TBAnswer").value = t.rows[x.rowIndex].cells[1].innerHTML;
+    }
+    function clicTrainAndPublish() {
+        alert("Click train and publish");
+    }
+</script>

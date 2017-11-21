@@ -1,0 +1,77 @@
+﻿@model QNABOT.Models.QnAQuery
+@{
+    ViewData["Title"] = "Home Page";
+    var question = "";
+    var answer = "";
+    var image = "";
+    var video = "";
+}
+<head>
+    <title>Novutek Support</title>
+    <link rel="icon" href="https://cdn.discordapp.com/attachments/354059749832261632/376987774324310016/TabLogo.png">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="~/js/scripts.js"></script>
+    <script type="text/javascript">
+        function updateScroll() {
+            var element = document.getElementById("autoscroll");
+            element.scrollTop = element.scrollHeight;
+        }
+        function ClearFields() {
+            document.getElementById("txtinput").value = "";
+            document.getElementById("txtinput").focus();
+        }
+    </script>
+</head>
+<body>
+    <form asp-controller="Home" asp-action="Index">
+        <button type="submit" class="buttonGen"><img src="https://image.flaticon.com/icons/svg/88/88254.svg" style="width:60px;height:60px;margin-right:10px" /></button>
+    </form>
+    <form asp-controller="Home" asp-action="About">
+        <button type="submit" class="buttonGen" style="margin-left:-1%"><img src="https://image.flaticon.com/icons/svg/61/61112.svg" style="width:60px;height:60px;" /></button>
+    </form>
+    <div class="chat">
+        <div class="chat_header">
+            <img class="chat_avatar" src="https://cdn.discordapp.com/attachments/354059749832261632/376964730805420056/novutek_logo.png">NOVUTEK
+            <div class="chat_status">ONLINE</div>
+        </div>
+        <div class="chat_s" id="autoscroll">
+            @for (var i = 0; i < Program.questions.Count; i++)
+            {
+                question = (string)Program.questions[i];
+                answer = (string)Program.answers[i];
+                image = (string)Program.images[i];
+                video = (string)Program.videos[i];
+                @Html.Raw("<div class=\"chat_bubble-2\">" + question + " </div>");
+                @Html.Raw("<div class=\"chat_bubble-1\">" + answer);
+                if (!image.Equals(""))
+                {
+                    <img src=@image style="width:100%;height:100%";">
+                }
+                else if (!video.Equals(""))
+                {
+                    <div class="mainvid"><iframe src=@video frameborder="0" allowfullscreen="1" class="video"></iframe></div>
+                }
+                @Html.Raw(" </div>");
+            }
+        </div>
+        <script type="text/javascript">
+            updateScroll();
+        </script>
+        <div class="chat_input">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @using (Html.BeginForm())
+            {
+                @Html.TextBox("SearchString", "", new { @class = "chat_text", @id= "txtinput" })
+                <button class="chat_submit fa fa-send"></button>
+            }
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+            ClearFields();
+</script>
+<style>
+.buttonGen{background-color:#f98d11;float:left;border-radius:50%;border:none;width:90px;height:90px;margin:2%;cursor:pointer;transition:all .4s}
+.buttonGen:hover{background-color: white;color:#fff}
+</style>
